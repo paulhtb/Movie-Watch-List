@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 2022_05_26_035824) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "bookmarks_id", null: false
-    t.index ["bookmarks_id"], name: "index_lists_on_bookmarks_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -40,12 +38,8 @@ ActiveRecord::Schema.define(version: 2022_05_26_035824) do
     t.float "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "bookmarks_id", null: false
-    t.index ["bookmarks_id"], name: "index_movies_on_bookmarks_id"
   end
 
   add_foreign_key "bookmarks", "lists"
   add_foreign_key "bookmarks", "movies"
-  add_foreign_key "lists", "bookmarks", column: "bookmarks_id"
-  add_foreign_key "movies", "bookmarks", column: "bookmarks_id"
 end
