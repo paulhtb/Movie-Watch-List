@@ -1,0 +1,10 @@
+<div class="movie-card">
+  <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %> poster" class="movie-poster">
+  <div class="movie-elements">
+    <h2><%= @movie.title %></h2>
+    <hr>
+    <p><%= @movie.overview %></p>
+    <p><strong><%= @movie.rating %>/10</strong></p>
+    <%= link_to "Add to a list", new_movie_bookmark_path(@movie), class: 'movieBtn btn btn-dark' %>
+  </div>
+</div>

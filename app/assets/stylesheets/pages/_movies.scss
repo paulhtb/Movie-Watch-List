@@ -1,0 +1,32 @@
+// Place all the styles related to the Movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.movies-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.movie-card {
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px 4px rgba(0,0,0,0.1);
+  padding: 40px;
+}
+
+.movie-poster {
+  object-fit: cover;
+  flex-grow: 1;
+  height: 65vh;
+  margin-right: 40px;
+}
+
+.movie-elements {
+  position: relative;
+  .movieBtn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}

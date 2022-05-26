@@ -11,6 +11,24 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav class="navbar navbar-light bg-light w-100 position-fixed my-navbar">
+      <div class="d-flex align-items-center w-100 me-5">
+        <a class="navbar-brand" href="/">
+          <img src="https://www.kindpng.com/picc/m/297-2978635_popcorn-bag-clipart-transparent-png-cartoon-popcorn-png.png" alt="" width="80" height="60">
+        </a>
+        <h3 class="logo-text flex-grow-1 mb-0">Movee.io</h3>
+        <%= link_to "My lists", lists_path, class: "btn btn-outline-dark mx-4"%>
+        <form class="d-flex" action="/">
+          <input class="form-control me-2" name="movie" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container nav-space">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

@@ -1,0 +1,11 @@
+<h1>List of my movies</h1>
+
+<div class="all-my-lists">
+<% @lists.each do |list| %>
+  <div class='my-list'>
+  <h3><%= list.name %></h3>
+  </div>
+<% end %>
+</div>
+
+<%= render "form", list: @list %>
