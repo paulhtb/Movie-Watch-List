@@ -1,10 +1,21 @@
-<div class="movie-card">
+<div class="movie-page-card">
   <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %> poster" class="movie-poster">
   <div class="movie-elements">
     <h2><%= @movie.title %></h2>
     <hr>
     <p><%= @movie.overview %></p>
     <h4><strong>⭐ <%= @movie.rating %></strong></h4>
-    <%= link_to "Add to a list", new_movie_bookmark_path(@movie), class: 'movieBtn btn btn-dark' %>
+    <div class="dropdown movieBtn">
+      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Add to a list
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <% @lists&.each do |list| %>
+          <%= link_to list.name, movie_bookmarks_path(@movie, bookmark: { list_id: list.id } ), method: :post, class: 'dropdown-item' %>
+        <% end %>
+        <hr>
+        <%= link_to "+ Add new list", "/lists/#new-list", class: "dd-new-list-btn"%>
+      </ul>
+    </div>
   </div>
 </div>

@@ -1,11 +1,36 @@
-<h1>List of my movies</h1>
+<h1>Lists</h1>
+<hr>
 
-<div class="all-my-lists">
-<% @lists.each do |list| %>
-  <div class='my-list'>
-  <h3><%= list.name %></h3>
-  </div>
-<% end %>
+<div class="all-my-lists my-5">
+  <% if @lists.empty?%>
+    <h3>No lists yet...</h3>
+  <% else %>
+    <% @lists.each do |list| %>
+      <div class='list-card'>
+        <%= link_to list_path(list) do %>
+          <% if list.photo.key %>
+            <%= cl_image_tag list.photo.key, class: "list-card-img" %>
+          <% else %>
+            <img src="https://static.turbosquid.com/Preview/2014/05/22__12_57_23/CAM_01.png970b3cc7-1c24-4379-9d1d-10f0e2fa495dLarge.jpg" alt="" class="list-card-img">
+          <% end %>
+        <% end %>
+        <div class="list-card-body">
+          <h4><%= list.name %></h4>
+          <p><em>Includes: <%= list.movies[0]&.title %>
+          <% list.movies[1..5]&.each do |movie| %>
+            <%= ", " if movie %><%= movie&.title %>
+          <% end %>
+          </em></p>
+          <%= link_to "Access list", list_path(list), class: "btn btn-outline-dark" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
 
-<%= render "form", list: @list %>
+<hr>
+
+<div id="new-list" class="create-list p-4">
+  <h3>Add a list:</h3>
+  <%= render "form", list: @list %>
+</div>
